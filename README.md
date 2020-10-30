@@ -13,6 +13,8 @@ Baca instruksi yang diberikan dengan baik.
 
 >**Untuk mendapatkan nilai sempurna pada level ini, konsentrasi menyesuaikan kode program kelas LiftPenumpang.java yang anda kerjakan pada level 1 sehingga semua konstruktor dan method dapat menerima atribut alarm yang bertipe Alarm (bukan String).**
 
+>**Perhatikan bahwa keluaran method toString() dari kelas LiftPenumpang perlu diupdate. Silahkan gambar yang ada pada rubrik penilaian no. 7**
+
 
 ## Rubrik Penilaian 
 1. **[Poin 10]** program dilengkapi dengan konstruktor tanpa parameter yang set data dengan nilai default sebagai berikut:
@@ -73,7 +75,7 @@ merk lift Hyundai, lift berada di lantai 1, status pintu lift tertutup, dan alar
 		> gradle test --tests TestLiftPenumpang.testLiftTurun
 
 7. **[Poin 15]** program dilengkapi dengan method toString() yang akan menampilkan data di dalam objek Rumah. Perhatikan contoh keluaran yang diberikan.
-![Image of output of toString()](http://api.puro.del.ac.id/v1/file/a6f5e764ebbea8eb72235294d4545d21)	
+![Image of output of toString()](http://api.puro.del.ac.id/v1/file/8c9574b629ce4e7f5f72ad5a63efccbf)	
 	
 	> Perintah test: 
 	
