@@ -1,31 +1,30 @@
 //LiftPenumpang.java
 package uts.pck1;
-
 public class LiftPenumpang{
 	//atribut
 	private String merk;
 	private int posisiLantai;
 	private boolean statusPintu;
-	private boolean alarm;
+	private Alarm alarm;
 	
 	//konstruktor
 	public LiftPenumpang(){
 		merk ="Hyundai";
 		posisiLantai=1;
 		statusPintu=false;
-		alarm=false;
+		alarm=new Alarm();
 	}
-	public LiftPenumpang(String merk,int posisiLantai, boolean statusPintu,boolean alarm){
+	public LiftPenumpang(String merk, int posisiLantai, boolean statusPintu,Alarm alarm){
 		this.merk=merk;
 		this.posisiLantai=posisiLantai;
 		this.statusPintu=statusPintu;
-		this.alarm=alarm;
+		this.alarm=new Alarm(alarm);
 	}
 	public LiftPenumpang(LiftPenumpang lift){
 		merk = lift.merk;
 		posisiLantai=lift.posisiLantai;
 		statusPintu=lift.statusPintu;
-		alarm=lift.alarm;
+		alarm=new Alarm(lift.alarm);
 	}
 	
 	//setter
@@ -38,7 +37,7 @@ public class LiftPenumpang{
 	public void setStatusPintu(boolean statusPintu){
 		this.statusPintu=statusPintu;
 	}
-	public void setAlarm(boolean alarm){
+	public void setAlarm(Alarm alarm){
 		this.alarm=alarm;
 	}
 	//getter
@@ -51,7 +50,7 @@ public class LiftPenumpang{
 	public boolean getStatusPintu( ){
 		return statusPintu;
 	}
-	public boolean getAlarm(){
+	public Alarm getAlarm(){
 		return alarm;
 	}
 	public String liftNaik(int posisiLantai){
@@ -79,14 +78,13 @@ public class LiftPenumpang{
 			
 	}
 	public String toString(){
-		return "Posisi lift "+merk+" di lantai "+posisiLantai+", pintu dalam keadaan "+ ((statusPintu==true)?"terbuka":"tertutup")+", dan alarm dalam keadaan "+ ((alarm==true)?"aktif":"non aktif");
+		return "Posisi lift "+merk+" di lantai "+posisiLantai+", pintu dalam keadaan "+ ((statusPintu==true)?"terbuka":"tertutup")+", dan "+alarm;
 	}
-	
 	//method ini tidak boleh dihapus atau diubah
 	public boolean equals(Object o){
 		if (o instanceof LiftPenumpang){
 			LiftPenumpang lift = (LiftPenumpang) o;
-			return (getMerk().equalsIgnoreCase(lift.getMerk())&& getPosisiLantai()==lift.getPosisiLantai() && getStatusPintu()==lift.getStatusPintu() && getAlarm()==lift.getAlarm() );
+			return (getMerk().equalsIgnoreCase(lift.getMerk())&& getPosisiLantai()==lift.getPosisiLantai() && getStatusPintu()==lift.getStatusPintu() && getAlarm().equals(lift.getAlarm() ));
 		}
 		return false;
 	}

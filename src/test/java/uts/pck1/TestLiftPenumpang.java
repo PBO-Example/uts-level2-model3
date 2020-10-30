@@ -19,43 +19,44 @@ public class TestLiftPenumpang {
 			
 	static Stream<Arguments> rumArray1() {
     return Stream.of(
-        Arguments.of("Hyundai",1,false,false),
-        Arguments.of("Toyota",5,true,true),
-		Arguments.of("Panasonic",10,true,false)
+        Arguments.of("Hyundai",1,false,new Alarm()),
+        Arguments.of("Toyota",5,true,new Alarm("Alarm Safetyguard", 2,true)),
+		Arguments.of("Panasonic",10,true,new Alarm("Alarm SafetyforAll", 3,false))
     );}
 	static Stream<Arguments> rumArray2() {
     return Stream.of(
-        Arguments.of(new LiftPenumpang("Hyundai",1,false,false)),
-        Arguments.of(new LiftPenumpang("Toyota",5,true,true)),
-		Arguments.of(new LiftPenumpang("Panasonic",10,true,false))
+        Arguments.of(new LiftPenumpang("Hyundai",1,false,new Alarm())),
+        Arguments.of(new LiftPenumpang("Toyota",5,true,new Alarm("Alarm Safetyguard", 2,true))),
+		Arguments.of(new LiftPenumpang("Panasonic",10,true,new Alarm("Alarm SafetyforAll", 3,false)))
     );}
 	
 	static Stream<Arguments> rumArray3() {
     return Stream.of(
-        Arguments.of("Hyundai",1,false,false,new LiftPenumpang("Hyundai",1,false,false)),
-        Arguments.of("Toyota",5,true,true,new LiftPenumpang("Toyota",5,true,true)),
-		Arguments.of("Panasonic",10,true,false,new LiftPenumpang("Panasonic",10,true,false))
+        Arguments.of("Hyundai",1,false,new Alarm(),new LiftPenumpang("Hyundai",1,false,new Alarm())),
+        Arguments.of("Toyota",5,true,new Alarm("Alarm Safetyguard", 2,true),new LiftPenumpang("Toyota",5,true,new Alarm("Alarm Safetyguard", 2,true))),
+		Arguments.of("Panasonic",10,true,new Alarm("Alarm SafetyforAll", 3,false),new LiftPenumpang("Panasonic",10,true,new Alarm("Alarm SafetyforAll", 3,false)))
     );}
 
 	static Stream<Arguments> rumArray4() {
     return Stream.of(
-        Arguments.of(new LiftPenumpang("Hyundai",1,false,false),"Posisi lift Hyundai di lantai 1, pintu dalam keadaan tertutup, dan alarm dalam keadaan non aktif"),
-        Arguments.of(new LiftPenumpang("Toyota",5,true,true),"Posisi lift Toyota di lantai 5, pintu dalam keadaan terbuka, dan alarm dalam keadaan aktif"),
-		Arguments.of(new LiftPenumpang("Panasonic",10,true,false),"Posisi lift Panasonic di lantai 10, pintu dalam keadaan terbuka, dan alarm dalam keadaan non aktif")
+        Arguments.of(new LiftPenumpang("Hyundai",1,false,new Alarm()),"Posisi lift Hyundai di lantai 1, pintu dalam keadaan tertutup, dan Alarm Easyguard level suara 1 dalam keadaan non aktif"),
+        Arguments.of(new LiftPenumpang("Toyota",5,true,new Alarm("Alarm Safetyguard", 2,true)),"Posisi lift Toyota di lantai 5, pintu dalam keadaan terbuka, dan Alarm Safetyguard level suara 2 dalam keadaan aktif"),
+		
+		Arguments.of(new LiftPenumpang("Panasonic",10,true,new Alarm("Alarm SafetyforAll", 3,false)),"Posisi lift Panasonic di lantai 10, pintu dalam keadaan terbuka, dan Alarm SafetyforAll level suara 3 dalam keadaan non aktif")
     );}
 	
 	static Stream<Arguments> rumArray5() {
     return Stream.of(
-        Arguments.of(new LiftPenumpang("Hyundai",1,false,false),10,"\nLift naik 9 lantai, sekarang anda berada di lantai 10"),
-        Arguments.of(new LiftPenumpang("Toyota",5,true,true), 5,"\nAnda sudah berada di lantai 5"),
-		Arguments.of(new LiftPenumpang("Panasonic",10,true,false),8,"\nAnda berada di lantai yang lebih tinggi, silakan tekan tombol turun")
+        Arguments.of(new LiftPenumpang("Hyundai",1,false,new Alarm()),10,"\nLift naik 9 lantai, sekarang anda berada di lantai 10"),
+        Arguments.of(new LiftPenumpang("Toyota",5,true,new Alarm("Alarm Safetyguard", 2,true)), 5,"\nAnda sudah berada di lantai 5"),
+		Arguments.of(new LiftPenumpang("Panasonic",10,true,new Alarm("Alarm SafetyforAll", 3,false)),8,"\nAnda berada di lantai yang lebih tinggi, silakan tekan tombol turun")
     );}
 	
 	static Stream<Arguments> rumArray6() {
     return Stream.of(
-        Arguments.of(new LiftPenumpang("Hyundai",10,false,false),8,"\nLift turun 2 lantai, sekarang anda  berada di lantai 8"),
-        Arguments.of(new LiftPenumpang("Toyota",11,true,true), 11,"\nAnda sudah berada di lantai 11"),
-		Arguments.of(new LiftPenumpang("Panasonic",5,true,false),10,"\nAnda berada di lantai yang lebih rendah, silakan tekan tombol naik")
+        Arguments.of(new LiftPenumpang("Hyundai",10,false,new Alarm()),8,"\nLift turun 2 lantai, sekarang anda  berada di lantai 8"),
+        Arguments.of(new LiftPenumpang("Toyota",11,true,new Alarm("Alarm Safetyguard", 2,true)), 11,"\nAnda sudah berada di lantai 11"),
+		Arguments.of(new LiftPenumpang("Panasonic",5,true,new Alarm("Alarm SafetyforAll", 3,false)),10,"\nAnda berada di lantai yang lebih rendah, silakan tekan tombol naik")
     );}
 	
 		
@@ -66,11 +67,11 @@ public class TestLiftPenumpang {
 		 assertThat("Hyundai", equalToIgnoringCase(rum.getMerk()));
 		 assertEquals(1, rum.getPosisiLantai());
 		 assertEquals(false, rum.getStatusPintu());
-		 assertEquals(false, rum.getAlarm()); 
+		 assertEquals(new Alarm(), rum.getAlarm()); 
 	}
 	@ParameterizedTest
 	@MethodSource("rumArray1")
-	public void testKonstruktorII(String merk, int lt, boolean p, boolean a) {
+	public void testKonstruktorII(String merk, int lt, boolean p, Alarm a) {
 		rum = new LiftPenumpang(merk,lt,p,a);
 		assertThat(merk, equalToIgnoringCase(rum.getMerk()));
 		 assertEquals(lt, rum.getPosisiLantai());
@@ -87,12 +88,13 @@ public class TestLiftPenumpang {
 		 assertEquals(r.getPosisiLantai(), rum.getPosisiLantai());
 		 assertEquals(r.getStatusPintu(), rum.getStatusPintu());
 		 assertEquals(r.getAlarm(), rum.getAlarm()); 
+		 assertNotSame(r.getAlarm(), rum.getAlarm(),"should not point to same Object"); 
 		 assertNotSame(r,rum, "should not point to same Object");
 	}
 
 	@ParameterizedTest
 	@MethodSource("rumArray3")
-	void testSetter(String merk, int lt, boolean p, boolean a,LiftPenumpang r) {
+	void testSetter(String merk, int lt, boolean p, Alarm a,LiftPenumpang r) {
 		rum = new LiftPenumpang();
 		rum.setMerk(merk);
 		rum.setPosisiLantai(lt);

@@ -1,15 +1,17 @@
-# UTS Praktikum Level 1 dari 4 Level
+# Selamat!!! Anda sekarang sudah di UTS Praktikum Level 2 dari 4 Level
 Baca instruksi yang diberikan dengan baik.
 
 
 ## Kelas Diagram
-![Image of UTS Level 1](http://api.puro.del.ac.id/v1/file/1a971c37621b7486bd24276d9e300770)
->Atribut statusPintu menyimpan kondisi pintu lift, jika terbuka nilainya true, dan jika tertutup nilainya false.
-
->Atribut alarm menyimpan kondisi alarm lift, jika sedang aktif nilainya true, dan jika sedang tidak aktif nilainya false.
-
->Realisasikan kelas diagram di atas ke dalam bahasa pemrograman Java, lengkapi dengan konstruktor tanpa parameter, konstruktor dengan parameter, kopi konstruktor, serta setter dan getter. Gunakan template yang disediakan di 
+![Image of UTS Level 2](http://api.puro.del.ac.id/v1/file/b8cc2b53b40cc2574b81341cef02a83c)
+>Realisasikan kelas LiftPenumpang dan kelas Alarm yang ada pada kelas diagram di atas ke dalam bahasa pemrograman Java. Untuk masing-masing kelas lengkapi dengan konstruktor tanpa parameter, konstruktor dengan parameter, kopi konstruktor, serta setter dan getter. Gunakan template yang disediakan di 
 **src\main\java\uts**.
+
+>**Anda boleh menggunakan (menyalin) kode program yang sudah anda hasilkan dari level 1**
+
+>**Perhatikan bahwa, pada level 2 ini, tipe atribut alarm adalah Alarm.**
+
+>**Untuk mendapatkan nilai sempurna pada level ini, konsentrasi menyesuaikan kode program kelas LiftPenumpang.java yang anda kerjakan pada level 1 sehingga semua konstruktor dan method dapat menerima atribut alarm yang bertipe Alarm (bukan String).**
 
 
 ## Rubrik Penilaian 
