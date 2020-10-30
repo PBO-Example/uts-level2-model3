@@ -13,7 +13,7 @@ Baca instruksi yang diberikan dengan baik.
 
 >**Untuk mendapatkan nilai sempurna pada level ini, konsentrasi menyesuaikan kode program kelas LiftPenumpang.java yang anda kerjakan pada level 1 sehingga semua konstruktor dan method dapat menerima atribut alarm yang bertipe Alarm (bukan String).**
 
->**Perhatikan bahwa keluaran method toString() dari kelas LiftPenumpang perlu diupdate. Silahkan gambar yang ada pada rubrik penilaian no. 7**
+>**Perhatikan bahwa keluaran method toString() dari kelas LiftPenumpang perlu diupdate. Silahkan cek gambar yang ada pada rubrik penilaian no. 7**
 
 
 ## Rubrik Penilaian 
